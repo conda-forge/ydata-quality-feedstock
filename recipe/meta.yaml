@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ydata-quality-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ydata-quality-{{ version }}.tar.gz
   sha256: e32bd5074a490d27606b42004d4d7cfbaaeeac21a403d9e40955ac8fb92c12c8
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7,<3.9
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.7,<3.9
+    - python >={{ python_min }},<3.9
     - dython ==0.6.7
     - matplotlib-base ==3.4.2
     - numpy ==1.20.3
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/ydataai/ydata-quality
