@@ -1,5 +1,6 @@
 {% set name = "ydata-quality" %}
 {% set version = "0.1.0" %}
+{% set python_min = "3.7" %}
 
 package:
   name: {{ name|lower }}
